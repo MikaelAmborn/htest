@@ -5,25 +5,18 @@ import axios from 'axios'
 import cors from 'cors'
 
 const app = express()
-const hiveApp = express()
 const port = 3000
-const hivePort = 3030
 
 app.use(logger('dev'))
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 
-hiveApp.use(logger('dev'))
-hiveApp.use(express.json())
-hiveApp.use(cookieParser())
-hiveApp.use(express.static('public'))
-
 app.get('/selfTest', (req, res) => {
   console.log("Cookies", req.cookies)
   console.log(`Request origin ${req.get('origin')}`)
 
-  res.send({someJson: 'data' })
+  res.send({cookie: req.cookies})
 })
 
 app.get('/', (req, res) => {
@@ -31,13 +24,9 @@ app.get('/', (req, res) => {
 
   // Set cookie
   res.cookie('hive', 'streaming', { sameSite: 'none' })
-  res.redirect('http://hiveapp:3030/index.html')
+  res.redirect('https://mikaelamborn.github.io/htest/public/index.html')
 })
 
 app.listen(port, () => {
   console.log(`App started on ${port}`)
-})
-
-hiveApp.listen(hivePort, () => {
-  console.log(`Hive app started on ${hivePort}`)
 })
