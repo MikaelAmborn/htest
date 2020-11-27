@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <script>
+      fetch('http://localhost:3000/selfTest', {credentials: 'include'})
+        .then(response => response.json())
+        .then(data => console.log(data));
+    </script>
+  </head>
+  <body>
+    <h1>Hivestreaming</h1>
+  </body>
+
+</html>
