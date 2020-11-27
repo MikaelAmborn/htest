@@ -3,7 +3,10 @@
     <script>
       fetch('http://localhost:3000/selfTest', {credentials: 'include'})
         .then(response => response.json())
-        .then(data => document.getElementById("cookie").innerHTML = data; );
+              .then(data => {
+                      console.log(data);
+                      document.getElementById("cookie").innerHTML = data; 
+                    });
     </script>
   </head>
   <body>

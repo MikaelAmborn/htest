@@ -20,8 +20,6 @@ app.get('/selfTest', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  console.log("Cookies", req.cookies) 
-
   // Set cookie
   res.cookie('hive', 'streaming', { sameSite: 'none' })
   res.redirect('https://mikaelamborn.github.io/htest/public/index.html')
