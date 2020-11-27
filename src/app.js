@@ -10,7 +10,7 @@ const port = 3000
 app.use(logger('dev'))
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({origin: 'https://mikaelamborn.github.io', credentials: true}))
 
 app.get('/selfTest', (req, res) => {
   console.log("Cookies", req.cookies)
